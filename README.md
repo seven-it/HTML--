@@ -39,6 +39,7 @@ DTD(Document Type Definition)  -------------- 文档定义类型
     * base      ----- 标签为页面上的所有链接规定默认地址或默认目标（target）;
         * 如果a标签的href为空，那么点击之后跳转到base指定的地址
         * 如果a标签的target属性为空，那么页面跳转的位置为base指定的位置
+        * 可见 html-demo文件中 base标签.html
     - link      -----一般用于引用外联样式表
         - href属性-----规定被链接文档的位置
         - rel 属性-----规定当前文档与被链接文档之间的关系
