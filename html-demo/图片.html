@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p>通过键盘tab键 可查看图片中可点击区域</p>
+    <!-- 定义一个客户端图像映射。图像映射（image-map）指带有可点击区域的一幅图像 -->
+    <img src="http://img2.imgtn.bdimg.com/it/u=862591842,2864954084&fm=27&gp=0.jpg" border="0" usemap="#planetmap" alt="Planets" />
+    <!--
+        usemap ：相对于 map标签的name 或者 id 属性做映射关系，为了兼容性考虑  map标签中 name与id都应该设置
+     -->
+
+    <map name="planetmap" id="planetmap">
+        <!-- 默认定义整个图片区域都是可点击的  -->
+        <!--<area shape="default"  coords=""  href="" alt="">-->
+        <!-- 定义一个矩形区域 4个值，分别定义左上角与右下角的坐标  x1:180,y1:139  x2:0,y2:50  形成一个矩形选择区-->
+        <area shape="rect" coords="180,139,0,50" href ="http://www.baidu.com" alt="Venus" />
+        <!-- 定义一个圆形区域 3个值，前两个定义的是圆心的位置 ，后一个是圆半径位置 x:200,y:161 r:100-->
+        <area shape="circle" coords="200,161,100"  href ="http://www.baidu.com" alt="Mercury" />
+        <!-- 定义一个多边形区域 多个值，每两个数值组合表示一个坐标点，依次连线形成的区域就是最终的热点区域-->
+        <area shape="poly" coords="150,100,200,120,180,130,190,180,150,150,100,160,140,120,100,110" href ="http://www.baidu.com" alt="Sun" />
+    </map>
+
+
+
+</body>
+</html>
