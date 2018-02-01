@@ -1,4 +1,7 @@
 # HTML文档
+---
+## 目录
+* 
 ## 基本概念
 ####  简介
 1. **什么是 HTML？**
@@ -45,7 +48,7 @@ DTD(Document Type Definition)  -------------- 文档定义类型
     * base      ----- 标签为页面上的所有链接规定默认地址或默认目标（target）;
         * 如果a标签的href为空，那么点击之后跳转到base指定的地址
         * 如果a标签的target属性为空，那么页面跳转的位置为base指定的位置
-        * 可见 html-demo文件中 base标签.html
+        * [可见 html-demo文件中 base标签](https://seven-it.github.io/HTML-notebook/html-demo/base%E6%A0%87%E7%AD%BE.html)
     - link      -----一般用于引用外联样式表
         - href属性-----规定被链接文档的位置
         - rel 属性-----规定当前文档与被链接文档之间的关系
@@ -130,7 +133,7 @@ DTD(Document Type Definition)  -------------- 文档定义类型
         -  带name属性的标签必须是a标签，才会生效
     -  通过id创建锚点   （推荐）
         -  任何标签都可成为锚点
-    -  demo :可见 html-demo文件中 超链接.html
+    -  [demo :可见 html-demo文件中 超链接](https://seven-it.github.io/HTML-notebook/html-demo/%E8%B6%85%E9%93%BE%E6%8E%A5.html)
 #### 什么是超文本
 - 超文本（英语：Hypertext）是一种在电脑显示器或其他电子设备，用以显示文本及与文本相关的内容，其中的文字包含有可以链接到其他字段或者文档的超链接，允许从当前阅读位置直接切换到超链接所指向的文字。
 - 一图胜千言 ，通过超链接可以从当前文本跳转到其它文本，形成一个关系网
@@ -141,7 +144,7 @@ DTD(Document Type Definition)  -------------- 文档定义类型
 - 两个a标签是不可以相互嵌套的；
 - 当两个a标签都为inline元素时 ，只有内嵌的那个a标签生效；
 - 当两个a标签都为block元素时，浏览器会将其父子关系拆分为兄弟关系
-- 具体demo ：可见 html-demo文件中 超链接.html
+- [具体demo ：可见 html-demo文件中 超链接](https://seven-it.github.io/HTML-notebook/html-demo/%E8%B6%85%E9%93%BE%E6%8E%A5.html)
 
 ## 图片
 #### 图片标签 \<img />
@@ -174,7 +177,7 @@ DTD(Document Type Definition)  -------------- 文档定义类型
     - 与a标签的target属性相同
 
 #### 演示demo地址
-- html-demo文件夹中：图片.html
+- [html-demo文件夹中：图片.html](https://seven-it.github.io/HTML-notebook/html-demo/%E5%9B%BE%E7%89%87.html)
 - [\<area>\<map>标签及在实际开发中的应用](http://www.zhangxinxu.com/wordpress/2017/05/html-area-map/)
 
 ## 表格
@@ -192,7 +195,7 @@ DTD(Document Type Definition)  -------------- 文档定义类型
     - \<col>     -----定义用于表格列的属性 （不常用）
     - \<colgroup>-----定义表格列的组  （不常用）
 - 表格样式尽量使用css来修改
-- demo地址 ：html-demo文件 表格.html
+- [demo地址 ：html-demo文件 表格.html](https://seven-it.github.io/HTML-notebook/html-demo/%E8%A1%A8%E6%A0%BC.html)
 
 ## 表单
 #### 表单定义
@@ -247,7 +250,8 @@ DTD(Document Type Definition)  -------------- 文档定义类型
     - 被禁用的元素是不可用和不可点击的
     - 被禁用的元素不会被提交
 - maxlength -----规定输入字段允许的最大长度
-    - 配合js来限制更加安全
+    - 配合js来限制更加安全
+- [demo可见 heml-demo:表单.html](https://seven-it.github.io/HTML-notebook/html-demo/%E8%A1%A8%E5%8D%95.html)
 
 ## 框架
 #### HTML 框架定义
@@ -269,6 +273,8 @@ DTD(Document Type Definition)  -------------- 文档定义类型
 - \<frame src="frame_a.htm" /> ----- 引入相应的页面
     - noresize="noresize" 该属性可禁止用户缩放页面
 - \<noframes></noframes> -----当浏览器不支持frameset时用文字代替，文字必须包含在body标签中
+- [demo可见 html-demo中：框架.html](https://seven-it.github.io/HTML-notebook/html-demo/%E6%A1%86%E6%9E%B6.html)
+-  [导航框架demo](https://seven-it.github.io/HTML-notebook/html-demo/a.html)
 
 #### 内联框架 iframe
 - iframe 的语法
@@ -277,6 +283,7 @@ DTD(Document Type Definition)  -------------- 文档定义类型
     -  height -----设置高度
     -  width ----- 设置宽度
     -  frameborder="0" -----删除边框
+- [内联框架demo](https://seven-it.github.io/HTML-notebook/html-demo/%E5%86%85%E8%81%94%E6%A1%86%E6%9E%B6.html)    
 - 使用 iframe 作为链接的目标
     - 必须设置name属性 链接到 a标签的target属性
 
