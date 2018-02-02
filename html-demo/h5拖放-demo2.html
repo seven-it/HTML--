@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 200px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 200px;
+            margin: 0 auto;
+            opacity: .2;
+        }
+    </style>
+</head>
+<body>
+    <p>删除图片  请使用谷歌浏览器</p>
+    <div id="div1">拖入删除</div>
+    <hr />
+    <img class="img0" id="img1" src="http://www.w3school.com.cn/i/eg_dragdrop_w3school.gif" alt="" draggable="true" >
+    <img class="img0" id="img2" src="http://www.w3school.com.cn/i/eg_dragdrop_w3school.gif" alt="" draggable="true" >
+    <img class="img0" id="img3" src="http://www.w3school.com.cn/i/eg_dragdrop_w3school.gif" alt="" draggable="true" >
+
+    <script>
+
+        var oDiv = document.getElementById('div1');
+        var aImg= document.querySelectorAll('.img0');
+
+        for(var i =0 ;i<aImg.length;i++){
+            aImg[i].ondragstart = function (event) {
+                event.dataTransfer.setData('asdf',this.id);
+            }
+        };
+
+        oDiv.ondragenter = function (event) {
+            this.style.opacity = '1';
+        };
+        oDiv.ondragleave = function (event) {
+            this.style.opacity = '.2';
+        };
+        oDiv.ondragover = function (event){
+            event.preventDefault();
+        }
+        oDiv.ondrop = function (evnet) {
+//            var id = event.dataTransfer.getData('asdf');
+            var oId = document.getElementById(id);
+            oId.parentNode.removeChild(oId);
+            this.style.opacity = '.2';
+            event.preventDefault();
+        }
+        
+        
+        
+        
+
+
+
+
+    </script>
+</body>
+</html>

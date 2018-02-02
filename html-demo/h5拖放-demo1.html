@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+<body>
+    <p>拖放图片放置到随意位置  请使用谷歌浏览器</p>
+    <img id="img1" style="position: absolute; left: 100px;" src="http://www.w3school.com.cn/i/eg_dragdrop_w3school.gif" alt="" draggable="true" >
+
+    <script>
+
+        var oDiv = document.getElementById('div1');
+        var oDiv2 = document.getElementById('div2');
+        var oImg = document.getElementById('img1');
+
+        var offX,offY;
+        oImg.ondragstart = function (event){
+            offX = event.offsetX;
+            offY = event.offsetY;
+            console.log(offsetX)
+            console.log(event.offsetLeft)
+        };
+        oImg.ondrag = function (evnet){
+            var pX = evnet.clientX;
+            var pY = evnet.clientY;
+            if(pX == 0 && pY == 0){
+                return;
+            }
+            pX -= offX;
+            pY -= offY;
+            oImg.style.left = pX + 'px';
+            oImg.style.top = pY + 'px';
+        }
+
+
+
+    </script>
+</body>
+</html>

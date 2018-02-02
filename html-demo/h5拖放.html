@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+<body>
+    <p>打开控制台 查看拖放事件触发顺序</p>
+    <div id="div1" style="width: 300px;height: 200px;border: 1px solid #000;"></div>
+    <img id="img1" style="position: absolute; left: 100px;" src="http://www.w3school.com.cn/i/eg_dragdrop_w3school.gif" alt="" draggable="true" >
+
+    <script>
+        var oDiv = document.getElementById('div1');
+        var oImg = document.getElementById('img1');
+
+        //注意：
+
+        // 源对象对应的触发事件
+        oImg.ondragstart = function (event){
+            console.log('开始拖动源对象 ondragstart')
+        }
+        oImg.ondrag = function (evnet){
+            console.log('源对象正在被拖动 ondrag')
+        }
+        oImg.ondragend = function (event) {
+            console.log('源对象被释放 ondragend')
+        };
+
+        //目标对象对应的触发事件
+        oDiv.ondragenter = function (event) {
+            console.log('源对象被拖入目标对象范围 ondragenter ')
+        }
+        oDiv.ondragover = function (event){
+            console.log('源对象在目标对象范围中悬停或移动 ondragover')
+        }
+        oDiv.ondragleave = function (event){
+            console.log('源对象离开目标对象范围时  ondragleave')
+        }
+        oDiv.ondrop = function (event) {
+            console.log('源对象被放置到目标对象中时  ondrop')
+        }
+
+
+    </script>
+</body>
+</html>

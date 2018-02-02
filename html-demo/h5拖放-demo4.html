@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<h1>可以尝试拖拽文本到框中，打开源码 尝试不同方式</h1>
+
+
+<div id="div1"></div>
+<!--<p id="text1" draggable="true">拖拽这个段落文本</p>-->
+<a id="text1" href="www.baidu.com">超链接</a>
+
+<script>
+    var text = document.querySelector('#text1');
+    var oDiv = document.querySelector('#div1');
+    // 实现拖拽文本 或 url 操作
+
+    text.ondragstart = function (event) {
+        console.log(1)
+        event.dataTransfer.setData('url',this.href);  //第二个值可以是自定义字符串，也可以是元素属性或者url
+    };
+    oDiv.ondragover = function (event) {
+        event.preventDefault();
+    };
+    oDiv.ondrop = function (event) {
+        var txt = event.dataTransfer.getData('url');
+       // var t = document.getElementById(txt);//如果getData返回的是id 或者元素节点，那么要进行获取操作
+        this.innerHTML = txt;
+    }
+
+
+</script>
+</body>
+</html>
