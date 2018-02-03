@@ -7,7 +7,7 @@
 </head>
 <body>
     <p>拖放图片放置到随意位置  请使用谷歌浏览器</p>
-    <img id="img1" style="position: absolute; left: 100px;" src="http://www.w3school.com.cn/i/eg_dragdrop_w3school.gif" alt="" draggable="true" >
+    <img id="img1" style="position: absolute; left: 100px;" src="http://www.w3school.com.cn/i/eg_dragdrop_w3school.gif" alt=""  >
 
     <script>
 
@@ -19,8 +19,6 @@
         oImg.ondragstart = function (event){
             offX = event.offsetX;
             offY = event.offsetY;
-            console.log(offsetX)
-            console.log(event.offsetLeft)
         };
         oImg.ondrag = function (evnet){
             var pX = evnet.clientX;

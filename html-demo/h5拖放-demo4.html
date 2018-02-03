@@ -16,8 +16,9 @@
 
 
 <div id="div1"></div>
-<!--<p id="text1" draggable="true">拖拽这个段落文本</p>-->
-<a id="text1" href="www.baidu.com">超链接</a>
+<!-- 文本是默认不可拖动的  所以必须添加 draggable="true" 属性来设置为可拖动 -->
+<p id="text1" draggable="true">拖拽这个段落文本</p>
+<!--<a id="text1" href="www.baidu.com">超链接</a>-->
 
 <script>
     var text = document.querySelector('#text1');
@@ -26,14 +27,14 @@
 
     text.ondragstart = function (event) {
         console.log(1)
-        event.dataTransfer.setData('url',this.href);  //第二个值可以是自定义字符串，也可以是元素属性或者url
+        event.dataTransfer.setData('txt',this.id);  //第二个值可以是自定义字符串，也可以是元素属性或者url
     };
     oDiv.ondragover = function (event) {
         event.preventDefault();
     };
     oDiv.ondrop = function (event) {
-        var txt = event.dataTransfer.getData('url');
-       // var t = document.getElementById(txt);//如果getData返回的是id 或者元素节点，那么要进行获取操作
+        var txt = event.dataTransfer.getData('txt');
+        var t = document.getElementById(txt);//如果getData返回的是id 或者元素节点，那么要进行获取操作
         this.innerHTML = txt;
     }
 

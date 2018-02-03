@@ -44,7 +44,7 @@
             event.preventDefault();
         }
         oDiv.ondrop = function (evnet) {
-//            var id = event.dataTransfer.getData('asdf');
+            var id = event.dataTransfer.getData('asdf');
             var oId = document.getElementById(id);
             oId.parentNode.removeChild(oId);
             this.style.opacity = '.2';
