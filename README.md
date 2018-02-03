@@ -7,8 +7,8 @@
 * [表格](https://github.com/seven-it/HTML-notebook#表格) 
 * [表单](https://github.com/seven-it/HTML-notebook#表单) 
 * [框架](https://github.com/seven-it/HTML-notebook#框架) 
-* [脚本](https://github.com/seven-it/HTML-notebook#脚本) 
-* [HTML5](https://github.com/seven-it/HTML-notebook#HTML5) 
+* [脚本](https://github.com/seven-it/HTML-notebook#脚本)
+* [HTML5](https://github.com/seven-it/HTML-notebook#HTML5)
 
 ## 基本概念
 ####  简介
