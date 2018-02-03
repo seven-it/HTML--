@@ -314,3 +314,94 @@ DTD(Document Type Definition)  -------------- 文档定义类型
 - 客户端脚本标签 \<script> 
 
 ## HTML5
+#### H5语义化的标签
+- \<header>\</header> -----页眉通常包括网站标志、主导航、全站链接以及搜索框
+- \<article>\</article> -----包含一段文档的内容，相当于报纸，多块但不相关联的内容
+- \<aside>\</aside> -----广告栏 侧边栏等于主体内容不相关的区域
+- \<audio>\</audio> ----- html5音频
+- \<canvas>\</canvas>        ----- html5画布
+- \<footer>\</footer>        ----- 定义网站底部区域    
+- \<nav>\</nav>       -----标记导航，仅对文档中重要的链接群使用
+- \<video>\</video>         ----- html5视频    
+- **以上标签为H5常用标签，兼容IE9+浏览器**
+- \<progress>\</progress> 标示任务的进度（进程）
+- **progress标签需要兼容IE10+**
+- \<section>（全兼容）-----定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分
+
+#### H5表单 兼容性稍差 不做记录
+#### H5视频
+- \<video>\</video>
+- 视频格式
+    - ogg格式支持 :Firefox,Opera,Chrome
+    - MPEG 4 格式支持：IE ，Chrome ，Safari
+    - WebM 格式支持：Firefox ，Opera ,Chrome
+- video 属性
+    - src -----要嵌入的视频地址，如果使用\<source>标签可省略 src
+    - width -----视频宽度
+    - height -----视频高度
+    - autoplay="autoplay" -----如果出现该属性，则视频在就绪后马上播放
+    - controls="controls" -----如果出现该属性，则向用户显示控件，比如播放按钮
+    - loop="loop" -----如果设置该属性，则视频将循环播放
+    - preload -----规定是否在页面加载后载入视频,如果设置了 autoplay 属性，则忽略该属性。
+        - auto - 当页面加载后载入整个视频
+        - meta - 当页面加载后只载入元数据
+        - none - 当页面加载后不载入视频
+
+#### H5音频
+- audio
+- 音频格式
+    - Ogg Vorbis格式支持 :Firefox,Opera,Chrome
+    - MP3 格式支持：IE9 ，Chrome ，Safari
+    - Wav 格式支持：Firefox ，Opera ,Safari
+- audio 属性
+    - 除了缺少 width 与 height 外 其它都与video一样
+
+#### 内嵌标签
+    - \<source src=" " type=" " />
+    - source 元素可以链接不同的音频与视频文件。浏览器将使用第一个可识别的格式
+
+```
+<audio controls="controls">
+//引入不同格式文件，兼容浏览器，该写法同样适用于video
+  <source src="song.ogg" type="audio/ogg">
+  <source src="song.mp3" type="audio/mpeg">
+Your browser does not support the audio tag.
+</audio>
+```
+#### H5拖放  drag & drop
+- 关于拖放
+    - h5拖放事件是html5的新特性，目前写了几个demo只有在谷歌浏览器支持较好，在火狐与ie中多少有些问题，所以目前这个特性我们只做一些了解就好。
+- 源对象与目标对象
+    - 源对象：就是我们想要拖拽的那个对像，可以是图片，文本，超链接等等。
+    - 目标对象：就是我们想将源对象放置的位置
+- 拖放属性
+    - draggable
+        - true
+        - false
+    - 对于浏览器默认可拖动的元素可以不设置该元素，例如图片与链接；而浏览器默认不可拖动的元素则必须设置该属性为true；例如一段文本
+    - [可见demo：h5拖放文本与链接](https://seven-it.github.io/HTML-notebook/html-demo/h5拖放-demo4.html)
+- 拖放API
+    - 拖放事件
+        - h5提供了7个关于拖放的事件函数，其中3个对应着源对象，4个对应着目标对象
+        - ondragstart：源对象开始被拖动 
+        - ondrag：源对象被拖动过程中
+        - ondragend：源对象被释放
+        - ondragenter：源对象被拖入目标对象范围
+        - ondragover：源对象在目标对象范围中悬停或移动
+        - ondragleave：源对象离开目标对象范围时
+        - ondrop：源对象被放置到目标对象中时
+        - 其中前三个相对于源对象，后4个相对于目标对象
+        - [demo:h5拖放事件检测](https://seven-it.github.io/HTML-notebook/html-demo/h5拖放.html)
+    - 拖放中的事件对象
+        - 在event对象中h5定义了一个新的对象属性
+        - event.dataTransfer { }
+        - 功能：用于在源对象和目标对象的事件间传递数据
+    - 如何在拖动的源对象事件和目标对象事件间传递数据
+        - 在event.dataTransfer这个新对象中有两个方法
+        - setData(key,value);
+            - 该方法用于在源对象事件中保存数据，key,val必须是string类型
+        - getData(key);
+            - 该方法用于在目标对象事件中读取设置好的数据，获取的值就是set方法中设置的value值
+        - [demo：h5拖放demo2](https://seven-it.github.io/HTML-notebook/html-demo/h5拖放-demo2.html)
+    - [demo:h5拖放demo1](https://seven-it.github.io/HTML-notebook/html-demo/h5拖放-demo1.html)
+    - [demo:h5拖放demo3](https://seven-it.github.io/HTML-notebook/html-demo/h5拖放-demo3.html)
