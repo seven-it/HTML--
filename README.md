@@ -8,7 +8,7 @@
 * [表单](https://github.com/seven-it/HTML-notebook#表单) 
 * [框架](https://github.com/seven-it/HTML-notebook#框架) 
 * [脚本](https://github.com/seven-it/HTML-notebook#脚本)
-* [00](https://github.com/seven-it/HTML-notebook#00)
+* [00](https://github.com/seven-it/HTML-notebook#h5总结)
 * [00](https://github.com/seven-it/HTML-notebook#00)
 
 ## 基本概念
@@ -314,7 +314,7 @@ DTD(Document Type Definition)  -------------- 文档定义类型
 - 目的就是为了减少更多的人力操作；
 - 客户端脚本标签 \<script> 
 
-## H5总结
+## h5总结
 #### H5语义化的标签
 - \<header>\</header> -----页眉通常包括网站标志、主导航、全站链接以及搜索框
 - \<article>\</article> -----包含一段文档的内容，相当于报纸，多块但不相关联的内容
