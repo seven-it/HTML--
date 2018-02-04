@@ -12,7 +12,8 @@
     function showPosition (position){
         x.innerHTML = '纬度：'+position.coords.latitude+
             '<br>经度：'+position.coords.longitude+
-            '<br>速度/s:'+position.coords.speed;
+            '<br>速度/s:'+position.coords.speed+
+            '<br>精度'+position.coords.accuracy;
     }
     if(navigator.geolocation){
 //        alert('浏览器支持该属性')
