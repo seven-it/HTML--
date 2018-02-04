@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p id="x"></p>
+
+<script>
+
+    function showPosition (position){
+        x.innerHTML = '纬度：'+position.coords.latitude+
+            '<br>经度：'+position.coords.longitude+
+            '<br>速度/s:'+position.coords.speed+
+            '<br>精度'+position.coords.accuracy;
+
+        navigator.geolocation.clearWatch(id)//清除循环获取定位
+    }
+    if(navigator.geolocation){
+//        alert('浏览器支持该属性')
+        var id = navigator.geolocation.watchPosition(showPosition)//开启循环获取
+    }else{
+        alert('浏览器不支持该属性')
+    }
+</script>
+</body>
+</html>
