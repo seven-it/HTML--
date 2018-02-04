@@ -405,3 +405,43 @@ Your browser does not support the audio tag.
         - [demo：h5拖放demo2](https://seven-it.github.io/HTML-notebook/html-demo/h5拖放-demo2.html)
     - [demo:h5拖放demo1](https://seven-it.github.io/HTML-notebook/html-demo/h5拖放-demo1.html)
     - [demo:h5拖放demo3](https://seven-it.github.io/HTML-notebook/html-demo/h5拖放-demo3.html)
+    
+#### h5地理位置
+- HTML5 Geolocation（地理定位）用于定位用户的位置
+    - [检测浏览器是否支持demo](https://seven-it.github.io/HTML-notebook/html-demo/h5地理位置检测.html)
+- geolocation API
+    - geolocation是属于navigator对象下的一个对象属性，该属性下包含三个方法属性
+    - getCurrentPosition（）方法
+    - watchPosition()方法
+    - clearWatch()方法
+- 方法介绍
+    - getCurrentPosition（）方法与watchPosition()方法，两者都接受三个参数
+        - successCallBack -----成功时的回调
+            - [获取地理位置成功demo](https://seven-it.github.io/HTML-notebook/html-demo/h5%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E6%88%90%E5%8A%9F%E5%87%BD%E6%95%B0.html)
+        - errorCallBack -----失败时的回调
+            - [获取地理位置失败demo](https://seven-it.github.io/HTML-notebook/html-demo/h5%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0.html)
+        - options -----包含三个配置属性的对象
+            - enableHighAccuracy -----指示获取位置的精确度，默认为false。如果设置为true，使用精确定位(卫星定位/GPS)，在PC端浏览器基本上都执行errorCB，也就是获取失败
+            - timeout：获取位置的最长等待时间，默认不限时间
+            - maximumAge：接受不超过指定时间毫秒的缓存位置，也就是在重复获取位置时，多长时间之后再次获取位置
+    - 当successCallBack成功时返回一个coords对象，该对象包含以下属性
+        - coords.latitude -----十进制数的纬度
+        - coords.longitude	-----十进制数的经度
+        - coords.accuracy	-----位置精度
+        - coords.altitude	-----海拔，海平面以上以米计
+        - coords.altitudeAccuracy	-----位置的海拔精度
+        - coords.heading	-----方向，从正北开始以度计
+        - coords.speed	-----速度，以米/每秒计
+        - timestamp	-----响应的日期/时间
+    - 以上属性中，只有前三个时必定会返回正常值的，其它属性如果在设备上时可用的，那么也会返回相应的值，如果时不可用的，那么会返回结果为false的值（0，null,NaN）
+    - 当errorCallBack失败时，会返回三个error属性
+        - error.PERMISSION_DENIED -----用户不允许地理定位
+        - error.POSITION_UNAVAILABLE -----无法获取当前位置
+        - error.TIMEOUT -----Timeout - 操作超时
+- getCurrentPosition（）方法与watchPosition()方法两者的区别
+    - getCurrentPosition 该方法只返回一次地理位置，相当于setTimeout
+    - watchPosition  该方法返回实时地理信息，相当于setInterval
+    - [实时获取地理位置demo](https://seven-it.github.io/HTML-notebook/html-demo/h5%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AEwatch%E6%96%B9%E6%B3%95.html)
+- clearWatch()方法 ----停止watchPosition实时监听
+    - 该方法的用法与清楚定时器完全相同
+    - [清除循环监听函数demo](https://seven-it.github.io/HTML-notebook/html-demo/h5%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E6%B8%85%E9%99%A4watch%E6%96%B9%E6%B3%95.html)
