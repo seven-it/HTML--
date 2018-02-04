@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<p id="x"></p>
+
+
+<script>
+    var x = document.getElementById('x');
+
+    if(navigator.geolocation){
+        console.log('浏览器支持该属性');
+        navigator.geolocation.getCurrentPosition(showPosition)
+    }else{
+        console.log('浏览器不支持该属性')
+    }
+
+    function showPosition(position){//成功函数
+        x.innerHTML = '经度'+position.coords.longitude +
+            '<br>纬度：'+position.coords.latitude+
+            '<br>位置精度：'+position.coords.accuracy+
+            '<br>海拔:'+position.coords.altitude+
+            '<br>位置海拔经度：'+position.coords.altitudeAccuracy+
+            '<br>方向，从正北开始计算：'+position.coords.heading+
+            '<br>速度/s：'+position.coords.speed+
+            '<br>响应的日期/时间：'+position.timestamp
+
+            //上方8个属性中  只有前三个是一定会有值的，其它的属性如果是可用的 会返回值，不可用的情况下不同浏览器返回不同的值
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<p id="x"></p>
+<div id="mapholder"></div>
+
+
+<script>
+    var x = document.getElementById('x');
+    function showPosition(position){//成功函数
+        x.innerHTML="纬度: " + position.coords.latitude +
+            "<br />经度: " + position.coords.longitude;
+
+    };
+
+    function showError(error) {//错误处理函数
+        switch (error.code)
+        {
+            case error.PERMISSION_DENIED://Permission denied - 用户不允许地理定位
+                x.innerHTML="User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE://Position unavailable - 无法获取当前位置
+                x.innerHTML="Location information is unavailable."
+                break;
+            case error.TIMEOUT://Timeout - 操作超时
+                x.innerHTML="The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR://发生了未知错误
+                x.innerHTML="An unknown error occurred."
+                break;
+        }
+    }
+    
+    if(navigator.geolocation){
+        console.log('浏览器支持该属性');
+        navigator.geolocation.getCurrentPosition(showPosition,showError)
+    }else{
+        console.log('浏览器不支持该属性')
+    }
+
+</script>
+</body>
+</html>
