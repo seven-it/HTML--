@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<p>查看网页源代码 了解localStorage API</p>
+
+<script>
+    var local = localStorage;
+    //存储,以下三种方式都可以进行存储设置，但推荐使用原生方法 setItem（）来进行存储操作
+    local.name = 1;
+    local['name'] = 1;
+    local.setItem('name',1);
+
+    //获取,以下三种方式都可以进行获取，但是推荐原生 getItem（）方法来进行获取操作
+    local.name
+    local['name']
+    local.getItem('name');    //若某个键的值为空，那么get方法总是返回null
+
+
+    // 删除
+    //    local.removeItem('name');   //remove方法必须传入key值，进行单个删除操作
+    //      local.clear();          clear 方法不需要传值，但是会清空所有
+
+    //获取 localStorage 中的键值
+    local.key('name')
+
+
+    //获取所有 键值
+//    for(var i=0;i<local.length;i++){
+//        console.log(local.key(i))
+//    }
+</script>
+</body>
+</html>

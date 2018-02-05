@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Page2</title>
+    <style>
+        #updateMessage {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            //给window.onStorage事件添加一个处理函数
+            window.addEventListener("storage", storageChanged, false);
+        };
+
+        function storageChanged(e) {
+            alert(2);
+            var message = document.getElementById("updateMessage");
+            message.innerHTML = "Local storage updated.";
+            message.innerHTML += "<br>Key: " + e.key;
+            message.innerHTML += "<br>Old Value: " + e.oldValue;
+            message.innerHTML += "<br>New Value: " + e.newValue;
+            message.innerHTML += "<br>URL: " + e.url;
+        }
+    </script>
+<body>
+<div id="updateMessage">No updates yet.</div>
+</body>
+</html>

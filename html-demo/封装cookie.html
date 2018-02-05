@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<p>查看网页源代码，查看详细注释</p>
+
+<script>
+    function setCookie (name,value,exdays){
+        /*
+        * name :key值
+        * value :value值
+        * exdays :过期时间
+        * */
+        var d = new Date();
+        d.setTime(d.getTime()+(exdays*24*60*60*1000));
+        var expires = 'expires='+d.toGMTString();
+        document.cookie = name+"="+value+";"+expires; //原生添加cookie方法
+    }
+
+    function getCookie(cname) {
+        var name = cname + "="; //拼接 key 值，cookie中值获取之后都是以 key = val的形式存在，所以要拼接 “=”
+        var ca = document.cookie.split(';'); // 切割获取的所有cookie
+        for(var i=0;i<ca.length;i++){
+            var c = ca[i].trim();               //去掉每一对cookie的首尾空格
+            if(c.indexOf(name)==0)return c.substring(name.length,c.length); // 当cookie值存在就返回
+        }
+        return ""; //不存在就返回空字符串
+    }
+
+    function checkCookie(){   //该函数用来检测cookie是否存在，若存在 弹出欢迎窗口，不存在则让用户输入name,并保存365天
+        var username = getCookie('username');
+        if(username!=""){
+            alert('Welcome again: ' + username);
+        }else{
+            username = prompt('Please enter your name:',"");
+            if(username!="" && username!=null){
+                setCookie('username',username,365);
+            }
+        }
+    }
+
+    checkCookie();
+
+
+</script>
+</body>
+</html>

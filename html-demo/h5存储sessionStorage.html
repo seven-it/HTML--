@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p>复制当前页面链接 在一个新的标签页打开，查看其sessionStorage是否有值</p>
+
+<p>设置key</p>
+<input id="key" type="text">
+<p>设置value</p>
+<input id="val" type="text">
+<p>提交到sessionStorage</p>
+<input type="button" onclick="addVal()" value="提交">
+<p>在当前会话页面，点击链接跳转到同源页面，该同源页面也会附带着当前会话的session数据</p>
+<a href="h5视频.html" target="_blank">该链接为同源页面，点击之后查看其sessionStorage</a>
+
+<script>
+
+    function addVal() {
+        var key = document.getElementById("key").value;
+        var item = document.getElementById("val").value;
+
+        sessionStorage.setItem(key, item);
+    }
+
+</script>
+</body>
+</html>
