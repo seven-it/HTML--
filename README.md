@@ -446,3 +446,44 @@ Your browser does not support the audio tag.
     - 该方法的用法与清楚定时器完全相同
     - [清除循环监听函数demo](https://seven-it.github.io/HTML-notebook/html-demo/h5%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE%E6%B8%85%E9%99%A4watch%E6%96%B9%E6%B3%95.html)
     
+#### H5存储
+- localStorage - 没有时间限制的数据存储
+    - 存储大小 -----不同浏览器有不同的规定，但是最多不超过5m
+    - 保存时间 ----- 只要不删除 永久保存 *****
+    - 存储位置 ----- 本地存储，数据不会跟随HTTP请求一起发送到服务器，只会在本地生效
+    - 存储方式 ----- key ,value
+    - 兼容 -----IE8+
+    - [查看localStorage Demo](https://seven-it.github.io/HTML-notebook/html-demo/h5存储localStorage.html)
+- sessionStorage - 会话级数据存储
+    - 存储大小 -----不同浏览器有不同的规定，但是最多不超过5m
+    - 保存时间 -----关闭标签页就自动清空所有 *****
+    - 存储位置 ----- 本地存储，数据不会跟随HTTP请求一起发送到服务器，只会在本地生效
+    - 存储方式 ----- key ,value
+    - 兼容 -----IE8+
+    - [查看sessionStorage DEmo](https://seven-it.github.io/HTML-notebook/html-demo/h5存储sessionStorage.html)
+- 以下API两者用法相同
+    - setItem（key,val）-----设置记录
+    - getItem(key) -----获取记录，没有就返回null
+    - removeItem(key)-----移除单个记录，必须传入参数key
+    - clear() -----清空所有记录，不需要传入参数
+    - key(key) -----获取key所对应的值，与getItem相似
+- 什么是session（会话）
+    - 在新标签或者窗口中打开一个页面就会初始化一个会话
+    - 一个页面算一个会话，同样的页面在浏览器中打开两个标签页算是两个会话窗口；
+    - 不同的会话保存不同的session数据
+    - 在当前会话页面，点击链接跳转到同源页面，该同源页面也会附带着当前会话的session数据，
+    - 当标签页或者窗口关闭，session数据会自动清除；
+    - 若使用Chrome的恢复标签页功能，seesionStorage的数据也会恢复
+
+- window.onStorage事件
+    - 监听数据是否发生改变
+    - 参数为一个回调函数，返回一个event对象
+        - e.key  -----改变的数据项的键
+        - e.oldValue -----改变前的旧值
+        - e.newValue -----改变后的新值
+        - e.url -----改变的存储对象所在的文档的 URL
+        - e.storageArea -----存储对象本身
+        - 具体用法可查看该链接demo源码
+    - 该事件目前在  localStorage上测试有效，sessionStorage上没有什么反应
+    - [查看onStorage事件demo](https://seven-it.github.io/HTML-notebook/html-demo/h5存储onStorage事件2.html)
+    
