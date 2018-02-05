@@ -486,4 +486,9 @@ Your browser does not support the audio tag.
         - 具体用法可查看该链接demo源码
     - 该事件目前在  localStorage上测试有效，sessionStorage上没有什么反应
     - [查看onStorage事件demo](https://seven-it.github.io/HTML-notebook/html-demo/h5存储onStorage事件2.html)
+- 关于Cookie
+    - 在localStorage和sessionStorage出现之前，cookie是常用的存储方式
+    - [cookie在个浏览器中的大小及个数](http://blog.csdn.net/proglovercn/article/details/45514705)
+    - [cookie的基本封装与使用](http://www.runoob.com/js/js-cookies.html)
+    - [cookie使用demo](https://seven-it.github.io/HTML-notebook/html-demo/%E5%B0%81%E8%A3%85cookie.html)
     
