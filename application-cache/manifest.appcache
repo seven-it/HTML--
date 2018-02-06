@@ -9,4 +9,4 @@ NETWORK:
 cat2.jpg
 
 FALLBACK:
-/application-cache/404.html
+application-cache/ /404.html
