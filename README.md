@@ -491,4 +491,64 @@ Your browser does not support the audio tag.
     - [cookie在个浏览器中的大小及个数](http://blog.csdn.net/proglovercn/article/details/45514705)
     - [cookie的基本封装与使用](http://www.runoob.com/js/js-cookies.html)
     - [cookie使用demo](https://seven-it.github.io/HTML-notebook/html-demo/%E5%B0%81%E8%A3%85cookie.html)
+#### HTML 5 应用程序缓存
+- 什么是应用程序缓存（Application Cache）？
+    - HTML5 引入了应用程序缓存，这意味着 web 应用可进行缓存，并可在没有因特网连接时进行访问
+    - 应用程序缓存为应用带来三个优势：
+        - 离线浏览 - 用户可在应用离线时使用它们
+        - 速度 - 已缓存资源加载得更快
+        - 减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。
+    - 浏览器支持
+        - IE10+
+- 如何使用应用程序缓存
+    - manifest属性
+        - 该属性指定使用哪个缓存清单来进行应用缓存
+        - 该属性写在html标签中
+        - 每个指定了 manifest 的页面在用户对其访问时都会被缓存。如果未指定 manifest 属性，则页面不会被缓存（除非在 manifest 文件中直接指定了该页面）。
+```
+<!DOCTYPE HTML>
+<html manifest="demo.appcache">
+...
+</html>
+```
+- Manifest 文件
+    - manifest 文件是简单的文本文件，它告知浏览器被缓存的内容（以及不缓存的内容）
+    - manifest 文件可分为三个部分：
+        - CACHE MANIFEST - 在此标题下列出的文件将在首次下载后进行缓存
+        - NETWORK - 在此标题下列出的文件需要与服务器的连接，且不会被缓存
+        - FALLBACK - 在此标题下列出的文件规定当页面无法访问时的回退页面（比如 404 页面）
+    - manifest 文件的建议的文件扩展名是：".appcache"。
+    - manifest 文件需要配置正确的 MIME-type，即 "text/cache-manifest"。必须在 web 服务器上进行配置；（一般都会支持该格式）
+    - [具体demo可打开该链接查看](https://seven-it.github.io/HTML-notebook/application-cache/H5g.html)
+    - 如何查看缓存进度
+        - 在谷歌浏览器中打开上面链接，查看控制台，会显示缓存信息，由于只要打开一次就生成缓存，所以想看到完整的信息需要先清理浏览器缓存再刷新该网页
+    - [具体目录结构可查看该链接](https://github.com/seven-it/HTML-notebook/tree/master/application-cache)
+       
+
+```
+CACHE MANIFEST   //设置需要缓存的文件
+# 2018-02-06 v1.0.0   
+cat.jpg
+demo.js
+H5g.html
+
+NETWORK:     // 设置需要连网的文件  
+* //可以使用星号来指示所有其他资源/文件都需要因特网连接。
+cat2.jpg  // 也可以像这样单独列出需要的清单， 但是两者不能同时出现
+
+FALLBACK: //当页面无法访问时的回退页面
+/application-cache/ /404.html // 注意中间需要有空格 
+
+```
+- 重要的提示：以 "#" 开头的是注释行，但也可满足其他用途。应用的缓存会在其 manifest 文件更改时被更新。如果您编辑了一幅图片，或者修改了一个 JavaScript 函数，这些改变都不会被重新缓存。更新注释行中的日期和版本号是一种使浏览器重新缓存文件的办法。
+- **注意事项：**
+    - 浏览器对缓存数据的容量限制可能不太一样（某些浏览器设置的限制是每个站点 5MB）
+    - 如果manifest文件，或者内部列举的某一个文件不能正常下载，整个更新过程将视为失败，浏览器继续全部使用老的缓存
+    - 引用manifest的html必须与manifest文件同源，在同一个域下
+    - 浏览器会自动缓存引用manifest文件的HTML文件，这就导致如果改了HTML内容，也需要更新版本才能做到更新。
+    - manifest文件中CACHE则与NETWORK，FALLBACK的位置顺序没有关系，如果是隐式声明需要在最前面
+    - FALLBACK中的资源必须和manifest文件同源
+    - 更新完版本后，必须刷新一次才会启动新版本（会出现重刷一次页面的情况），需要添加监听版本事件。
+    - 站点中的其他页面即使没有设置manifest属性，请求的资源如果在缓存中也从缓存中访问
+    - 当manifest文件发生改变时，资源请求本身也会触发更新
     
