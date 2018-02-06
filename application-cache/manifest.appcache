@@ -1,9 +1,11 @@
 CACHE MANIFEST
 cat.jpg
 demo.js
+H5g.html
 
 NETWORK:
 cat2.jpg
+h5.html
 
-FALLBACK
+FALLBACK:
 /404.html
