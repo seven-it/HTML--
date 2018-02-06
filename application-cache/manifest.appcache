@@ -3,11 +3,10 @@ CACHE MANIFEST
 cat.jpg
 demo.js
 H5g.html
-404.html
+
 
 NETWORK:
 cat2.jpg
-h5.html
 
 FALLBACK:
-h5.html 404.html
+/application-cache/ /404.html
