@@ -10,4 +10,4 @@ cat2.jpg
 h5.html
 
 FALLBACK:
-https://seven-it.github.io/HTML-notebook/application-cache/ 404.html
+/application-cache/ /404.html
