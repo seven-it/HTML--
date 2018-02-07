@@ -551,4 +551,44 @@ FALLBACK: //当页面无法访问时的回退页面
     - 更新完版本后，必须刷新一次才会启动新版本（会出现重刷一次页面的情况），需要添加监听版本事件。
     - 站点中的其他页面即使没有设置manifest属性，请求的资源如果在缓存中也从缓存中访问
     - 当manifest文件发生改变时，资源请求本身也会触发更新
-    
+
+#### web worker
+- HTML5引入了一个工作线程（webWorker）的概念,它允许开发人员编写能够长时间运行而不被用户所中断的后台程序，去执行事务或者逻辑，并同时保证页面对用户的响应。
+- 简而言之，就是允许JavaScript创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。
+- 下面代码创建一个工作线程 myWorker
+```
+ var myWorker = new Worker('worker.js'); //创建web worker
+ myWorker.onmessage = function (e) {   //调用worker中的onmessage事件监听 worker.js返回的数据
+     result.textContent = e.data;   // 数据包含在event.data中
+ }
+```
+- 下面代码 是worker.js的内容
+```
+onmessage = function (e) { //调用onmessage方法来监听主线程中传来的数据
+    var w = 'result: '+(e.data[0] * e.data[1]);  //处理数据
+    postMessage(w); // 调用postMessage方法 将处理后的数据返回给主线程；
+}
+```
+- [webWorker小demo地址](https://seven-it.github.io/HTML-notebook/webworker/h5-worker.html)
+- webWorker之常用API （主线程中这些方法必须挂载到对应的worker对象下才可以执行）
+    - postMessage(data) -----子线程与主线程之间互相通信使用方法，传递的data为任意值
+    - terminate()  -----主线程中终止worker，此后无法再利用其进行消息传递。注意：一旦terminate后，无法重新启用，只能另外创建。
+    - close() -----子线程中断操作，作用与terminate()相同。
+        - 如果worker注册了message事件处理程序，只要其有可能触发，worker就一直在内存中，不会退出，所以通信完毕后得手动在主线程中terminate或者子线程中close掉，但如果worker没有监听消息，那么当所有任务执行完毕（包括计数器）后，他就会退出
+    - onmessage事件 -----当有消息发送就会触发该事件，具体可见上方代码
+    - onerror -----错误处理事件
+        - [webWorker错误处理demo地址](https://seven-it.github.io/HTML-notebook/webworker/worker-error.html)
+    - importScripts -----Worker 线程能够访问一个全局函数importScripts()来引入脚本，该函数接受0个或者多个URI作为参数来引入资源；以下例子都是合法的：
+        - importScripts();  -----什么都不引入 
+        - importScripts('foo.js');  ----- 只引入 "foo.js"
+        - importScripts('foo.js', 'bar.js'); -----引入两个脚本 
+        - [importScripts 引用demo地址](https://seven-it.github.io/HTML-notebook/webworker/worker-importScripts.html)
+- worker上下文
+    - 在worker中并不支持 window，以及window相关的DOM API，所以在worker中写一个alert（），浏览器会报错
+    - 在worker中可以使用什么
+        - location
+        - XMLHttpRequest
+        - setTimeout/setInterval以及addEventListener
+- [以上三个worker Dome的项目地址，可下载查看注释](https://github.com/seven-it/HTML-notebook/tree/master/webworker)
+- [worker更详细博客地址](https://www.cnblogs.com/giggle/p/5350288.html)
+- [worker的MDN地址](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers)
