@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="worker.js"></script>
+</head>
+<body>
+
+<p>输入数字 查看两者的乘积</p>
+<input type="text" id="first">
+<input type="text" id="second">
+<input type="button" value="计算">
+<p id="result">显示结果</p>
+
+<input id="stop" type="button" value="停止worker">
+
+<script>
+    //兼容 IE10+
+    if(window.Worker){
+//        alert('ok')
+        var first = document.querySelector('#first');
+        var second = document.querySelector('#second');
+        var result = document.querySelector('#result');
+        var stop = document.querySelector('#stop');
+
+        first.onchange = function () {
+            myWorker.postMessage([first.value,second.value]);
+            console.log('将信息传入worker')
+        };
+        second.onchange = function () {
+            myWorker.postMessage([first.value,second.value]);
+            console.log('将信息传入worker');
+        };
+
+        var myWorker = new Worker('worker.js'); //创建web worker
+        myWorker.onmessage = function (e) {   //调用worker中的onmessage事件监听 worker.js返回的数据
+            result.textContent = e.data;   // 数据包含在event.data中
+        }
+
+        stop.onclick = function () {
+            myWorker.terminate();   //调用该方法将终止worker ,并且无法恢复 ，只能重新创建新的worker，或者刷新页面
+                                    //close()  ;   在worker中 也可以调用自己的 close  方法进行关闭，
+                                    //  这两个方法的作用是相同的，只是terminate()在主线程中调用，close()在worker中调用
+            alert('worker被停止');
+        }
+    }else {
+        alert('no')
+    }
+</script>
+</body>
+</html>

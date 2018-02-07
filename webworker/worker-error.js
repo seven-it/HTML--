@@ -1,0 +1,1 @@
+alert(1); //在worker中是无法访问到window对象的，所以调用alert（）方法会报错；同时会触发worker的onerror事件

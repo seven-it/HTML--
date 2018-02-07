@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+
+    var myWorker = new Worker('worker-error.js'); //创建web worker
+
+    myWorker.onerror = function (e) {//worker报错 触发onerror事件
+        alert('出错了，请查看控制台');
+    }
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p>查看控制台 </p>
+
+<script>
+    var myWorker = new Worker('importScripts.js');
+
+    myWorker.postMessage(2)
+    myWorker.onmessage = function (e){
+        console.log(e.data)
+    }
+</script>
+</body>
+</html>
